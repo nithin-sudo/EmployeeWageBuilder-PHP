@@ -10,27 +10,30 @@ class EmployeeWage
     $IS_FULL_TIME = 1;
     $IS_PART_TIME = 0;
     $WAGE_PER_HOUR = 20;
-    $FULL_WORK_HOUR = 8;
-    $PART_WORK_HOUR = 4;
-    $random = rand(0,1);
+    $WORKING_DAYS = 20;
+    $empHrs = 0;
+    $dailyWage = 0;
+    $totalWage = 0;
     
-    //calculating employee daily wage using switch.
-    switch ($random) 
-    {
+    //calculating employee daily wage per month using switch.
+    for ($i=1; $i < $WORKING_DAYS ; $i++) 
+    { 
+        $random = rand(0,1);
+        switch ($random) 
+        {
         case $IS_FULL_TIME:
-            print "Employee is present";
-            $dailyWage = $WAGE_PER_HOUR * $FULL_WORK_HOUR;
-            print "Daily Wage: ".$dailyWage;
+            $empHrs = 8;
             break;
         case $IS_PART_TIME:
-            print "Employee is Part time present";
-            $dailyWage = $WAGE_PER_HOUR * $PART_WORK_HOUR;
-            print "Daily Wage: ".$dailyWage;
+            $empHrs = 4;
             break;
         default:
-            echo "Employee is absent.";
-            break;
+            $empHrs = 0;
+        }
+        $dailyWage = $WAGE_PER_HOUR * $empHrs;
+        $totalWage += $dailyWage;
     }
+    echo "Salary Per Month: ".$totalWage;
     }
 }
 #calling the static function by using the class.
