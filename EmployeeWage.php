@@ -43,6 +43,7 @@ class EmployeeWage
     echo "Total Working Days: ".$i."Total Working Hours:".$totalWorkingHrs." , "."Salary Per Month: ".$totalWage;
     }
 }
-#calling the static function by using the class.
-EmployeeWage::calcEmployeeWage();
+#calling the function by using object.
+$empWage = new EmployeeWage();
+$empWage -> calcEmployeeWage();
 ?>
