@@ -14,24 +14,24 @@ class EmployeeWage
     $PART_WORK_HOUR = 4;
     $random = rand(0,1);
     
-    //calculating employee daily wage.
-    if($random == $IS_FULL_TIME)
+    //calculating employee daily wage using switch.
+    switch ($random) 
     {
-        print "Employee is present";
-        $dailyWage = $WAGE_PER_HOUR * $FULL_WORK_HOUR;
-        print "Daily Wage: ".$dailyWage;
-    }    
-    else if($random == $IS_PART_TIME)
-    {
-        print "Employee is Part time present";
-        $dailyWage = $WAGE_PER_HOUR * $PART_WORK_HOUR;
-        print "Daily Wage: ".$dailyWage;
+        case $IS_FULL_TIME:
+            print "Employee is present";
+            $dailyWage = $WAGE_PER_HOUR * $FULL_WORK_HOUR;
+            print "Daily Wage: ".$dailyWage;
+            break;
+        case $IS_PART_TIME:
+            print "Employee is Part time present";
+            $dailyWage = $WAGE_PER_HOUR * $PART_WORK_HOUR;
+            print "Daily Wage: ".$dailyWage;
+            break;
+        default:
+            echo "Employee is absent.";
+            break;
     }
-    else
-    {
-        print "Employee is absent" ;   
-    }    
-   }
+    }
 }
 #calling the static function by using the class.
 EmployeeWage::calcEmployeeWage();
