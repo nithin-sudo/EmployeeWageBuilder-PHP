@@ -14,7 +14,7 @@ class EmployeeWage
     $empHrs = 0;
     $dailyWage = 0;
     $totalWage = 0;
-    
+    $totalWorkingHrs = 0;
     //calculating employee daily wage per month using switch.
     for ($i=1; $i < $WORKING_DAYS ; $i++) 
     { 
@@ -30,10 +30,17 @@ class EmployeeWage
         default:
             $empHrs = 0;
         }
+
+        //Calculating wage till this condition.
+        if($totalWorkingHrs >= 100 || $i == 20)
+        {
+            break;
+        }
         $dailyWage = $WAGE_PER_HOUR * $empHrs;
         $totalWage += $dailyWage;
+        $totalWorkingHrs += $empHrs;
     }
-    echo "Salary Per Month: ".$totalWage;
+    echo "Total Working Days: ".$i."Total Working Hours:".$totalWorkingHrs." , "."Salary Per Month: ".$totalWage;
     }
 }
 #calling the static function by using the class.
