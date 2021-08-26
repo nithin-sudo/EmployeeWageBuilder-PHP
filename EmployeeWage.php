@@ -1,30 +1,28 @@
 <?php
 class EmployeeWage
 {
+    public $IS_FULL_TIME = 1;
+    public $IS_PART_TIME = 0;
    /**
     *Declaring a static function and checking the Employee
     *Attendance by using rand() function
     */
-   public static function calcEmployeeWage()
+   public function calcEmployeeWage($companyName,$wagePerHr,$workingDays)
    {
-    $IS_FULL_TIME = 1;
-    $IS_PART_TIME = 0;
-    $WAGE_PER_HOUR = 20;
-    $WORKING_DAYS = 20;
     $empHrs = 0;
     $dailyWage = 0;
     $totalWage = 0;
     $totalWorkingHrs = 0;
     //calculating employee daily wage per month using switch.
-    for ($i=1; $i < $WORKING_DAYS ; $i++) 
+    for ($i=1; $i < $workingDays ; $i++) 
     { 
         $random = rand(0,1);
         switch ($random) 
         {
-        case $IS_FULL_TIME:
+        case $this -> IS_FULL_TIME:
             $empHrs = 8;
             break;
-        case $IS_PART_TIME:
+        case $this -> IS_PART_TIME:
             $empHrs = 4;
             break;
         default:
@@ -36,14 +34,17 @@ class EmployeeWage
         {
             break;
         }
-        $dailyWage = $WAGE_PER_HOUR * $empHrs;
+        $dailyWage = $wagePerHr * $empHrs;
         $totalWage += $dailyWage;
         $totalWorkingHrs += $empHrs;
     }
-    echo "Total Working Days: ".$i."Total Working Hours:".$totalWorkingHrs." , "."Salary Per Month: ".$totalWage;
+
+    //Associative array
+    $details = array("Company" => $companyName,"Total Working Days" => $i,"Total Working Hours " => $totalWorkingHrs,"Salary Per Month" => $totalWage);
+    print_r($details);
     }
 }
 #calling the function by using object.
 $empWage = new EmployeeWage();
-$empWage -> calcEmployeeWage();
+$empWage -> calcEmployeeWage("Adani","20","20");
 ?>
